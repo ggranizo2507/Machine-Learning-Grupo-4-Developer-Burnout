@@ -225,12 +225,16 @@ Abre el notebook directamente en Colab:
 
 ## 👥 Autores
 
-**Grupo 4 — Machine Learning**
+Grupo 4 — Machine Learning
 Universidad de Especialidades Espíritu Santo (UEES)
-Eduardo Alejandro Ceballos Jijón 
-Guillermo Leónidas Granizo Veintimilla 
-José Farid Ulloa Manzur 
-Christian Xavier Valle Maridueña
+
+| # | Nombre |
+|---|--------|
+| 1 | Eduardo Alejandro Ceballos Jijón |
+| 2 | Guillermo Leónidas Granizo Veintimilla |
+| 3 | José Farid Ulloa Manzur |
+| 4 | Christian Xavier Valle Maridueña |
+
 ---
 
 ## 📄 Licencia

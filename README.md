@@ -227,7 +227,10 @@ Abre el notebook directamente en Colab:
 
 **Grupo 4 — Machine Learning**
 Universidad de Especialidades Espíritu Santo (UEES)
-
+Eduardo Alejandro Ceballos Jijón 
+Guillermo Leónidas Granizo Veintimilla 
+José Farid Ulloa Manzur 
+Christian Xavier Valle Maridueña
 ---
 
 ## 📄 Licencia

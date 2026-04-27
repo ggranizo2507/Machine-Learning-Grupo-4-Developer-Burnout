@@ -26,7 +26,7 @@ El **agotamiento laboral (burnout)** es uno de los problemas más críticos en l
 
 | Opción | Descripción | Enlace |
 |--------|-------------|--------|
-| 📊 **NBSanity** | Visualiza el notebook completo con todos los gráficos renderizados | [Ver ahora](https://nbsanity.com/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
+| 📊 **NBSanity** | Visualiza el notebook completo con todos los gráficos renderizados | [Ver ahora](https://nbsanity.com/static/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
 | ▶️ **Google Colab** | Ejecuta el notebook interactivamente en la nube | [Abrir en Colab](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
 
 ### Gráficos incluidos en el notebook

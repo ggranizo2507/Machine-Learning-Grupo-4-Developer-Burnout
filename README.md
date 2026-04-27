@@ -113,10 +113,25 @@ Datos Crudos
    • F1 por fold, boxplot de estabilidad
     │
     ▼
-8. Ajuste de hiperparámetros (GridSearchCV)
+8. Ajuste de hiperparámetros (RandomizedSearchCV)
    • Optimización de Gradient Boosting
+   • 20 iteraciones aleatorias × 5 folds = 100 fits
    • Evaluación final en test set (una sola vez)
 ```
+
+---
+
+### ¿Por qué RandomizedSearchCV en lugar de GridSearchCV?
+
+| Estrategia | Combinaciones | Folds | Total fits | Tiempo estimado |
+|------------|:-------------:|:-----:|:----------:|:---------------:|
+| GridSearchCV | 72 | 5 | 360 | 8–15 min |
+| **RandomizedSearchCV** | **20** | **5** | **100** | **2–4 min** |
+
+**RandomizedSearchCV** evalúa una muestra aleatoria del espacio de hiperparámetros en lugar de todas las combinaciones posibles. Con `n_iter=20` y `random_state=42` se obtienen resultados prácticamente equivalentes al grid completo con un **72% menos de tiempo de cómputo**.
+
+> Referencia: Bergstra & Bengio (2012) — *"Random Search for Hyper-Parameter Optimization"* — Journal of Machine Learning Research.
+
 
 ---
 
@@ -152,14 +167,14 @@ Se seleccionó **Gradient Boosting** como modelo final por las siguientes razone
 
 > ⚠️ **Nota:** Todos los modelos presentan métricas excepcionalmente altas (> 0.96) debido a la naturaleza **sintética** del dataset. En datos reales de burnout se esperarían métricas entre 0.70 y 0.85.
 
-### Hiperparámetros óptimos (GridSearchCV)
+### Hiperparámetros óptimos (RandomizedSearchCV)
 
 ```python
 GradientBoostingClassifier(
-    n_estimators  = 200,    # optimizado
-    learning_rate = 0.05,   # optimizado
-    max_depth     = 3,      # optimizado
-    subsample     = 0.8,    # optimizado
+    n_estimators  = 200,    # optimizado vía RandomizedSearchCV
+    learning_rate = 0.05,   # optimizado vía RandomizedSearchCV
+    max_depth     = 3,      # optimizado vía RandomizedSearchCV
+    subsample     = 0.8,    # optimizado vía RandomizedSearchCV
     min_samples_leaf = 10,
     max_features  = 'sqrt',
     random_state  = 42
@@ -218,20 +233,20 @@ Abre el notebook directamente en Colab:
 | Modelo 4 | Gradient Boosting |
 | Comparación | Curvas ROC, heatmap y barplot comparativo |
 | CV | StratifiedKFold k=8 |
-| Tuning | GridSearchCV + evaluación final |
+| Tuning | RandomizedSearchCV + evaluación final |
 | Conclusiones | Selección y justificación del mejor modelo |
 
 ---
 
 ## 👥 Autores
 
-Grupo 4 — Machine Learning
+**Grupo 4 — Machine Learning**
 Universidad de Especialidades Espíritu Santo (UEES)
 
 | # | Nombre |
 |---|--------|
 | 1 | Eduardo Alejandro Ceballos Jijón |
-| 2 | Guillermo Leonidas Granizo Veintimilla |
+| 2 | Guillermo Leónidas Granizo Veintimilla |
 | 3 | José Farid Ulloa Manzur |
 | 4 | Christian Xavier Valle Maridueña |
 

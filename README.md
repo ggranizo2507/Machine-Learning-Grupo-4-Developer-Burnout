@@ -5,9 +5,9 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Completado-brightgreen)
-![NBViewer](https://img.shields.io/badge/NBViewer-Ver%20Notebook-blue?logo=jupyter)
+![NBSanity](https://img.shields.io/badge/NBSanity-Ver%20Notebook-blue?logo=jupyter)
 
-[![Open in NBViewer](https://img.shields.io/badge/📊%20Ver%20Gráficos%20y%20Resultados-NBViewer-orange?style=for-the-badge&logo=jupyter)](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
+[![Open in NBSanity](https://img.shields.io/badge/📊%20Ver%20Gráficos%20y%20Resultados-NBSanity-orange?style=for-the-badge&logo=jupyter)](https://nbsanity.com/static/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 
 ---
@@ -26,7 +26,7 @@ El **agotamiento laboral (burnout)** es uno de los problemas más críticos en l
 
 | Opción | Descripción | Enlace |
 |--------|-------------|--------|
-| 📊 **NBViewer** | Visualiza el notebook completo con todos los gráficos renderizados | [Ver ahora](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
+| 📊 **NBSanity** | Visualiza el notebook completo con todos los gráficos renderizados | [Ver ahora](https://nbsanity.com/static/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
 | ▶️ **Google Colab** | Ejecuta el notebook interactivamente en la nube | [Abrir en Colab](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
 
 ### Gráficos incluidos en el notebook
@@ -252,12 +252,12 @@ Abre el notebook directamente en Colab sin instalar nada:
 
 > Recuerda actualizar la ruta del dataset en la celda de carga de datos apuntando a tu Google Drive.
 
-### 4. Ver resultados sin ejecutar (NBViewer)
+### 4. Ver resultados sin ejecutar (NBSanity)
 Visualiza todos los gráficos y outputs del notebook directamente en el navegador:
 
-[![Open in NBViewer](https://img.shields.io/badge/📊%20Ver%20en%20NBViewer-orange?style=for-the-badge&logo=jupyter)](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
+[![Open in NBSanity](https://img.shields.io/badge/📊%20Ver%20en%20NBSanity-orange?style=for-the-badge&logo=jupyter)](https://nbsanity.com/static/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 
-> ⚠️ NBViewer muestra los outputs guardados en el notebook. Asegúrate de subir el notebook con las celdas **ya ejecutadas** para que los gráficos sean visibles.
+> ⚠️ NBSanity muestra los outputs guardados en el notebook. Asegúrate de subir el notebook con las celdas **ya ejecutadas** para que los gráficos sean visibles.
 
 ---
 

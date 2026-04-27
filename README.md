@@ -5,6 +5,10 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Completado-brightgreen)
+![NBViewer](https://img.shields.io/badge/NBViewer-Ver%20Notebook-blue?logo=jupyter)
+
+[![Open in NBViewer](https://img.shields.io/badge/📊%20Ver%20Gráficos%20y%20Resultados-NBViewer-orange?style=for-the-badge&logo=jupyter)](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 
 ---
 
@@ -13,6 +17,39 @@
 El **agotamiento laboral (burnout)** es uno de los problemas más críticos en la industria del software. Este proyecto adopta un **enfoque basado en datos** para predecir el nivel de burnout de desarrolladores de software (`Low`, `Medium`, `High`) a partir de métricas de estilo de vida y trabajo.
 
 > **Pregunta de investigación:** ¿Es posible predecir el nivel de agotamiento de un desarrollador a partir de variables como horas de trabajo, nivel de estrés, horas de sueño y métricas de productividad?
+
+---
+
+## 📊 Ver Resultados y Gráficos
+
+> Los gráficos se generan al ejecutar el notebook. Para verlos sin ejecutar nada:
+
+| Opción | Descripción | Enlace |
+|--------|-------------|--------|
+| 📊 **NBViewer** | Visualiza el notebook completo con todos los gráficos renderizados | [Ver ahora](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
+| ▶️ **Google Colab** | Ejecuta el notebook interactivamente en la nube | [Abrir en Colab](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb) |
+
+### Gráficos incluidos en el notebook
+
+| # | Gráfico | Sección |
+|---|---------|---------|
+| 1 | Distribución de clases de burnout | EDA |
+| 2 | Mapa de calor de correlaciones | EDA |
+| 3 | Análisis de outliers (boxplots) | EDA |
+| 4 | Correlación de features con el target | Paso 5.1 |
+| 5 | Curva ROC — Regresión Logística | Modelo 1 |
+| 6 | Matriz de confusión — Regresión Logística | Modelo 1 |
+| 7 | Curva de complejidad — Árbol de Decisión | Modelo 2 |
+| 8 | Diagnóstico de overfitting (train vs test) | Modelo 2 |
+| 9 | Visualización del árbol (3 niveles) | Modelo 2 |
+| 10 | Feature Importance — Random Forest | Modelo 3 |
+| 11 | Curva de convergencia — Gradient Boosting | Modelo 4 |
+| 12 | Curva ROC comparativa (4 modelos) | Comparación |
+| 13 | Heatmap de métricas | Comparación |
+| 14 | Heatmap AUC-ROC por clase | Comparación |
+| 15 | F1-Score por fold (k=8) | Cross-Validation |
+| 16 | Boxplot de estabilidad por modelo | Cross-Validation |
+| 17 | Impacto de max_depth en F1 | Tuning |
 
 ---
 
@@ -209,11 +246,18 @@ pip install pandas numpy matplotlib seaborn scikit-learn scipy
 ```
 
 ### 3. Ejecutar en Google Colab
-Abre el notebook directamente en Colab:
+Abre el notebook directamente en Colab sin instalar nada:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 
 > Recuerda actualizar la ruta del dataset en la celda de carga de datos apuntando a tu Google Drive.
+
+### 4. Ver resultados sin ejecutar (NBViewer)
+Visualiza todos los gráficos y outputs del notebook directamente en el navegador:
+
+[![Open in NBViewer](https://img.shields.io/badge/📊%20Ver%20en%20NBViewer-orange?style=for-the-badge&logo=jupyter)](https://nbviewer.org/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
+
+> ⚠️ NBViewer muestra los outputs guardados en el notebook. Asegúrate de subir el notebook con las celdas **ya ejecutadas** para que los gráficos sean visibles.
 
 ---
 

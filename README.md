@@ -200,10 +200,10 @@ Datos Crudos (7,000 registros)
 
 | Modelo | MAE | RMSE | R² |
 |--------|:---:|:----:|:--:|
-| Ridge Regression | ~8.24 | ~10.39 | ~0.796 |
-| Random Forest Regressor | — | — | ~0.756 |
-| Gradient Boosting Reg. | — | — | ~0.781 |
-| SVR | — | — | ~0.769 |
+| **Ridge Regression** | 8.2363 | 10.3887 | **0.7961** |
+| Gradient Boosting Reg. | 8.6054 | 10.7675 | 0.7810 |
+| SVR | 8.8256 | 11.0567 | 0.7691 |
+| Random Forest Regressor | 9.1132 | 11.3543 | 0.7565 |
 
 ---
 
@@ -215,8 +215,9 @@ Datos Crudos (7,000 registros)
 3. **Robustez** — 100 estimadores secuenciales con corrección progresiva de errores.
 
 ### Regresión — Mejor R² (ver Paso 4 del notebook)
-- **R² ≈ 0.796** → explica el ~80% de la varianza de `stress_level`.
-- **RMSE ≈ 10.39** → error promedio del ~10% sobre escala 0-100.
+- **R² = 0.7961** → explica el 79.61% de la varianza de `stress_level`.
+- **RMSE = 10.3887** → error promedio del ~10.4% sobre escala 0-100.
+- **MAE = 8.2363** → en promedio la predicción está a 8.24 puntos del valor real.
 - Complementa la clasificación con una **estimación cuantitativa continua** del estrés.
 
 > ⚠️ **Nota:** Métricas excepcionalmente altas por la naturaleza **sintética** del dataset.

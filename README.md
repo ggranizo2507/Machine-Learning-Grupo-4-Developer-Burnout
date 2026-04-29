@@ -108,8 +108,8 @@ Datos Crudos
     │
     ▼
 1. Limpieza y preprocesamiento
-   • Eliminación de NaN en variable objetivo
-   • Imputación con mediana (SimpleImputer)
+   • Eliminación de NaN en variable objetivo (fix: clase fantasma nan)
+   • Imputación con mediana (SimpleImputer — fit solo en train)
    • Codificación de etiquetas (LabelEncoder)
    • Tratamiento de outliers (Winsorización IQR)
     │
@@ -128,32 +128,35 @@ Datos Crudos
     │
     ▼
 4. Análisis de correlación con el target
-   • Opción 1: Detección de features infladas
-   • Opción 2: Exclusión justificada de features
+   • Opción 1: Detección de features con correlación sospechosa
+   • Opción 2: Exclusión justificada (solo si |corr| > 0.85)
     │
     ▼
 5. Entrenamiento de modelos (4 algoritmos)
    • Regresión Logística
-   • Árbol de Decisión (con búsqueda de profundidad óptima)
-   • Random Forest
-   • Gradient Boosting
+   • Árbol de Decisión (búsqueda automática de profundidad óptima)
+   • Random Forest (200 árboles, max_depth=10)
+   • Gradient Boosting (parámetros estándar recomendados)
     │
     ▼
 6. Evaluación y comparación
-   • Métricas: Accuracy, Precisión, Recall, F1, AUC-ROC
-   • Curvas ROC comparativas
+   • Métricas: Accuracy, Precisión, Recall, F1-Score, AUC-ROC
+   • Curvas ROC comparativas (por modelo y por clase)
    • Matrices de confusión
-   • Heatmap y barplot de comparación
+   • Heatmap y barplot de comparación acumulada
     │
     ▼
 7. Validación cruzada (StratifiedKFold k=8)
-   • F1 por fold, boxplot de estabilidad
+   • Mantiene balance de clases en cada fold
+   • F1 por fold (gráfico de líneas), boxplot de estabilidad
+   • Tabla: Media F1, Std F1, Min, Max por modelo
     │
     ▼
 8. Ajuste de hiperparámetros (RandomizedSearchCV)
    • Optimización de Gradient Boosting
-   • 20 iteraciones aleatorias × 5 folds = 100 fits
-   • Evaluación final en test set (una sola vez)
+   • 20 iteraciones aleatorias × 5 folds = 100 fits (72% menos que GridSearch)
+   • Evaluación final en test set (una sola vez — regla estricta)
+   • Análisis del impacto de max_depth en el F1
 ```
 
 ---
@@ -168,7 +171,6 @@ Datos Crudos
 **RandomizedSearchCV** evalúa una muestra aleatoria del espacio de hiperparámetros en lugar de todas las combinaciones posibles. Con `n_iter=20` y `random_state=42` se obtienen resultados prácticamente equivalentes al grid completo con un **72% menos de tiempo de cómputo**.
 
 > Referencia: Bergstra & Bengio (2012) — *"Random Search for Hyper-Parameter Optimization"* — Journal of Machine Learning Research.
-
 
 ---
 
@@ -192,29 +194,38 @@ Datos Crudos
 | Random Forest | 0.9988 | 0.9992 | 0.9974 |
 | **Gradient Boosting** | **1.0000** | **1.0000** | **0.9999** |
 
+### Validación Cruzada — StratifiedKFold (k=8)
+
+| Modelo | Media F1 | Std F1 | Estabilidad |
+|--------|:--------:|:------:|:-----------:|
+| Regresión Logística | ~0.960 | Baja | ✅ Estable |
+| Árbol de Decisión | ~0.990 | Media | ⚠️ Varianza moderada |
+| Random Forest | ~0.991 | Baja | ✅ Muy estable |
+| **Gradient Boosting** | **~0.993** | **Baja** | ✅ **Mejor balance** |
+
 ---
 
 ## 🏆 Modelo Seleccionado: Gradient Boosting
 
-Se seleccionó **Gradient Boosting** como modelo final por las siguientes razones:
+Se seleccionó **Gradient Boosting** como modelo final por tres razones que se refuerzan mutuamente:
 
 1. **AUC-ROC perfecto (1.0000)** en las clases High y Low, y 0.9999 en Medium — separa perfectamente las distribuciones de probabilidad entre las tres clases.
-2. **F1-Score competitivo (0.9934)** — segundo mejor resultado, a menos de 0.001 del árbol de decisión.
-3. **Mayor robustez** — resultado de 100 estimadores secuenciales con corrección progresiva de errores, más confiable que un árbol único.
+2. **Estabilidad en Cross-Validation** — la Std más baja entre los 4 modelos confirma que su rendimiento no depende de una partición favorable de los datos.
+3. **Mayor robustez** — resultado de estimadores secuenciales con corrección progresiva de errores (boosting), más confiable que un árbol único ante variaciones en los datos.
 
-> ⚠️ **Nota:** Todos los modelos presentan métricas excepcionalmente altas (> 0.96) debido a la naturaleza **sintética** del dataset. En datos reales de burnout se esperarían métricas entre 0.70 y 0.85.
+> ⚠️ **Nota:** Todos los modelos presentan métricas excepcionalmente altas (> 0.96) debido a la naturaleza **sintética** del dataset. En datos reales de burnout se esperarían métricas entre **0.70 y 0.85**.
 
 ### Hiperparámetros óptimos (RandomizedSearchCV)
 
 ```python
 GradientBoostingClassifier(
-    n_estimators  = 200,    # optimizado vía RandomizedSearchCV
-    learning_rate = 0.05,   # optimizado vía RandomizedSearchCV
-    max_depth     = 3,      # optimizado vía RandomizedSearchCV
-    subsample     = 0.8,    # optimizado vía RandomizedSearchCV
+    n_estimators     = 200,   # optimizado vía RandomizedSearchCV
+    learning_rate    = 0.05,  # optimizado vía RandomizedSearchCV
+    max_depth        = 3,     # optimizado vía RandomizedSearchCV
+    subsample        = 0.8,   # optimizado vía RandomizedSearchCV
     min_samples_leaf = 10,
-    max_features  = 'sqrt',
-    random_state  = 42
+    max_features     = 'sqrt',
+    random_state     = 42
 )
 ```
 
@@ -250,7 +261,7 @@ Abre el notebook directamente en Colab sin instalar nada:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ggranizo2507/Machine-Learning-Grupo-4-Developer-Burnout/blob/main/Prediccion_agotamiento_desarrollador_clasificacion_ML_S2.ipynb)
 
-> Recuerda actualizar la ruta del dataset en la celda de carga de datos apuntando a tu Google Drive.
+> Recuerda subir el archivo `developer_burnout_dataset.csv` a `/content/` en Colab antes de ejecutar.
 
 ### 4. Ver resultados directamente en GitHub
 GitHub renderiza el notebook con todos los gráficos y outputs sin necesidad de instalar nada:
@@ -276,9 +287,9 @@ GitHub renderiza el notebook con todos los gráficos y outputs sin necesidad de 
 | Modelo 3 | Random Forest |
 | Modelo 4 | Gradient Boosting |
 | Comparación | Curvas ROC, heatmap y barplot comparativo |
-| CV | StratifiedKFold k=8 |
-| Tuning | RandomizedSearchCV + evaluación final |
-| Conclusiones | Selección y justificación del mejor modelo |
+| CV | StratifiedKFold k=8 — tabla, líneas y boxplot |
+| Tuning | RandomizedSearchCV + evaluación final + impacto max_depth |
+| Conclusiones | Selección del mejor modelo + conclusión de validación cruzada |
 
 ---
 
